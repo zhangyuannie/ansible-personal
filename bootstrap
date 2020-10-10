@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if ! rpm -q ansible 2>/dev/null; then
+  sudo yum -y install ansible
+fi
+
+cd "$(dirname "$(readlink -f "$0")")"
+
+ansible-playbook workstation.yml --ask-become-pass

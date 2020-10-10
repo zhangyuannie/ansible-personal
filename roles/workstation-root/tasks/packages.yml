@@ -1,0 +1,56 @@
+- name: Remove Gnome Software
+  dnf:
+    name: '{{ packages }}'
+    state: absent
+    autoremove: yes
+  vars:
+    packages:
+      - PackageKit
+      - gnome-software
+
+- name: Upgrade all packages
+  dnf:
+    name: '*'
+    state: latest
+
+- name: Enable the RPM Fusion repository
+  dnf:
+    name:
+      - 'https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm'
+    state: present
+    disable_gpg_check: yes
+
+- name: Install packages
+  package:
+    name: '{{ packages }}'
+    state: present
+  vars:
+    packages:
+      - git
+      - neovim
+      - java-11-openjdk-devel
+      - nodejs
+      - yarn
+      - code
+      - google-chrome-stable
+      - python3-psutil # ansible dconf module
+      - evolution
+      - evolution-ews
+      - seahorse
+      - seahorse-nautilus
+      - texlive
+      - latexmk
+      - texlive-chktex
+      - texlive-latexindent
+      - texlive-wrapfig
+      - texlive-sourcesanspro
+      - texlive-fontawesome
+      - texlive-tcolorbox
+      - gimp
+      - inkscape
+      - gcc
+      - gcc-c++
+      - clang
+      - make
+      - ffmpeg
+      - vlc

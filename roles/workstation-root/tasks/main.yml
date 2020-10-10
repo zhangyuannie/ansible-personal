@@ -1,0 +1,5 @@
+- block:
+    - import_tasks: repos.yml
+    - import_tasks: packages.yml
+    - import_tasks: flatpak.yml
+  become: yes

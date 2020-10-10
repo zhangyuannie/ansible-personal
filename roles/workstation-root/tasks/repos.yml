@@ -1,0 +1,26 @@
+- name: Add the google-chrome repository
+  yum_repository:
+    name: google-chrome
+    description: Google Chrome
+    baseurl: http://dl.google.com/linux/chrome/rpm/stable/x86_64
+    gpgcheck: yes
+    gpgkey: https://dl.google.com/linux/linux_signing_key.pub
+    skip_if_unavailable: yes
+
+- name: Add the vscode repository
+  yum_repository:
+    name: vscode
+    description: Visual Studio Code
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+    gpgcheck: yes
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    skip_if_unavailable: yes
+
+- name: Add the yarn repository
+  yum_repository:
+    name: yarn
+    description: Yarn
+    baseurl: https://dl.yarnpkg.com/rpm/
+    gpgcheck: yes
+    gpgkey: https://dl.yarnpkg.com/rpm/pubkey.gpg
+    skip_if_unavailable: yes

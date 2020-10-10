@@ -1,0 +1,30 @@
+- name: Setup basic directories
+  file:
+    state: directory
+    path: '{{ item }}'
+  loop:
+    - ~/Projects
+    - ~/Templates
+    - ~/.local/bin
+
+- name: Setup the home directory
+  vars:
+    files_dir: '{{ ansible_env.PWD }}/roles/workstation-user/files/home'
+  block:
+    - name: Find the files
+      find:
+        paths: '{{ files_dir }}'
+        hidden: yes
+        recurse: yes
+        file_type: file
+      register: home_files
+
+    - name: Link the files
+      file:
+        src: '{{ item.path }}'
+        dest: '{{ ansible_env.HOME }}/{{ item.path | replace(files_dir, "") }}'
+        state: link
+        force: yes
+      loop: '{{ home_files.files }}'
+      loop_control:
+        label: '{{ item.path | basename }}'

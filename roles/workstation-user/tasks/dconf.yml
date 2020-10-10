@@ -1,0 +1,53 @@
+- name: Show battery percentage
+  dconf:
+    key: /org/gnome/desktop/interface/show-battery-percentage
+    value: 'true'
+
+- name: Allow volume above 100 percent
+  dconf:
+    key: /org/gnome/desktop/sound/allow-volume-above-100-percent
+    value: 'true'
+
+- name: Allow using Super-Q instead of Alt-F4
+  dconf:
+    key: /org/gnome/desktop/wm/keybindings/close
+    value: "['<Super>q', '<Alt>F4']"
+
+- name: Allow toggling fullscreen with Super-F
+  dconf:
+    key: /org/gnome/desktop/wm/keybindings/toggle-fullscreen
+    value: "['<Super>f']"
+
+- name: Enable night light
+  dconf:
+    key: /org/gnome/settings-daemon/plugins/color/night-light-enabled
+    value: 'true'
+
+- name: Set Nautilus icon view to standard
+  dconf:
+    key: /org/gnome/nautilus/icon-view/default-zoom-level
+    value: "'standard'"
+
+- name: Enable symlink creation in Nautilus
+  dconf:
+    key: /org/gnome/nautilus/preferences/show-create-link
+    value: 'true'
+
+- name: Set keybinding for launching terminal
+  block:
+    - name: register custom0
+      dconf:
+        key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+        value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+    - name: add binding to custom0
+      dconf:
+        key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding
+        value: "'<Super>Return'"
+    - name: add command to custom0
+      dconf:
+        key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command
+        value: "'gnome-terminal'"
+    - name: add name to custom0
+      dconf:
+        key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name
+        value: "'Launch terminal'"

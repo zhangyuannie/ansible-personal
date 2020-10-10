@@ -1,0 +1,99 @@
+#!/usr/bin/python3
+
+from cmd import Cmd
+from math import *
+from fractions import Fraction
+
+
+def binom(n, r):
+    return factorial(n) // factorial(r) // factorial(n - r)
+
+
+def to_frac(d):
+    return Fraction(f"{d}")
+
+
+def print_green(o):
+    print(f"\u001b[92m{o}\u001b[0m")
+
+
+def print_red(o):
+    print(f"\u001b[91m{o}\u001b[0m")
+
+
+def close_brackets(s: str) -> str:
+    n = 0
+    for c in s:
+        if c == "(":
+            n += 1
+        elif c == ")":
+            n -= 1
+    if n > 0:
+        return s + n * ")"
+    return s
+
+
+class Calc(Cmd):
+    prompt = "> "
+
+    def __init__(self):
+        super().__init__()
+        self.ctx = globals()
+
+    def cmdloop(self):
+        while True:
+            try:
+                super().cmdloop()
+                break
+            except KeyboardInterrupt:
+                print("^C")
+
+    def precmd(self, line: str):
+        l = line.strip().replace("^", "**")
+        if l.startswith(("+", "-", "*", "/")):
+            l = "ans" + l
+        return close_brackets(l)
+
+    def default(self, line):
+        try:
+            self.ctx["ans"] = eval(line, self.ctx)
+        except Exception as e:
+            print_red(e)
+        else:
+            print_green(self.ctx["ans"])
+
+    def do_exec(self, arg, var=None):
+        try:
+            exec(arg, self.ctx)
+        except Exception as e:
+            print_red(e)
+        else:
+            if var:
+                print_green(self.ctx[var])
+            else:
+                print_green("Done")
+
+    def do_let(self, arg):
+        try:
+            name, body = [a.strip() for a in arg.split("=", 1)]
+        except ValueError:
+            print("`let x = 1` to define a variable")
+            print("`let add = x,y -> x + y` to define a function`")
+        else:
+            if "->" in body:
+                body = body.split("->", 1)
+                params = ",".join(body[0].strip().split())
+                self.do_exec(f"def {name}({params}):return {body[1]}", name)
+            else:
+                self.do_exec(f"{name}={body}", name)
+
+    def do_quit(self, arg):
+        return True
+
+    def do_EOF(self, arg):
+        print("quit")
+        return True
+
+
+if __name__ == "__main__":
+    Calc().cmdloop()
