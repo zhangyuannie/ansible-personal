@@ -28,7 +28,9 @@
     packages:
       - git
       - neovim
+      - htop
       - java-11-openjdk-devel
+      - golang
       - nodejs
       - yarn
       - code
@@ -46,6 +48,7 @@
       - texlive-sourcesanspro
       - texlive-fontawesome
       - texlive-tcolorbox
+      - texlive-clrscode3e
       - gimp
       - inkscape
       - gcc
