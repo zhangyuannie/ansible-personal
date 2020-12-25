@@ -1,5 +1,12 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
+#
+# a simple command-line calculator
+#
+# Copyright (c) Zhangyuan Nie
+# This source code is licensed under the MIT license
 
+import re
 from cmd import Cmd
 from math import *
 from fractions import Fraction
@@ -74,18 +81,20 @@ class Calc(Cmd):
                 print_green("Done")
 
     def do_let(self, arg):
+        arrow_str = "=>"
         try:
-            name, body = [a.strip() for a in arg.split("=", 1)]
+            name, value = [a.strip() for a in arg.split("=", 1)]
         except ValueError:
             print("`let x = 1` to define a variable")
-            print("`let add = x,y -> x + y` to define a function`")
+            print(f"`let add = (x,y) {arrow_str} x + y` to define a function")
         else:
-            if "->" in body:
-                body = body.split("->", 1)
-                params = ",".join(body[0].strip().split())
-                self.do_exec(f"def {name}({params}):return {body[1]}", name)
+            if arrow_str in value:
+                params, body = value.split(arrow_str, 1)
+                if params.startswith("(") and params.endswith(")"):
+                    params = params[1:-1]
+                self.do_exec(f"{name}=lambda {params}: {body}", name)
             else:
-                self.do_exec(f"{name}={body}", name)
+                self.do_exec(f"{name}={value}", name)
 
     def do_quit(self, arg):
         return True
