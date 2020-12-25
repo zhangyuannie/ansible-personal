@@ -4,8 +4,6 @@
     path: '{{ item }}'
   loop:
     - ~/Projects
-    - ~/Templates
-    - ~/.local/bin
 
 - name: Setup the home directory
   vars:
@@ -19,12 +17,27 @@
         file_type: file
       register: home_files
 
+    - name: Set src_paths
+      set_fact:
+        src_paths: "{{ home_files.files | map(attribute='path') | list }}"
+
+    - name: Set dest_paths
+      set_fact:
+        dest_paths: '{{ src_paths | replace(files_dir, ansible_env.HOME) }}'
+
+    - name: Create the directories
+      file:
+        path: '{{ item }}'
+        state: directory
+        recurse: yes
+      loop: "{{ dest_paths | map('dirname') | list | unique }}"
+
     - name: Link the files
       file:
-        src: '{{ item.path }}'
-        dest: '{{ ansible_env.HOME }}/{{ item.path | replace(files_dir, "") }}'
+        src: '{{ item[0] }}'
+        dest: '{{ item[1] }}'
         state: link
         force: yes
-      loop: '{{ home_files.files }}'
+      loop: '{{ src_paths | zip(dest_paths) | list }}'
       loop_control:
-        label: '{{ item.path | basename }}'
+        label: '{{ item[1] }}'
