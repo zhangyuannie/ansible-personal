@@ -26,20 +26,20 @@
     state: present
   vars:
     packages:
+      # dev
       - git
-      - neovim
-      - htop
       - java-11-openjdk-devel
       - golang
       - nodejs
       - yarn
-      - code
-      - google-chrome-stable
       - python3-psutil # ansible dconf module
-      - evolution
-      - evolution-ews
-      - seahorse
-      - seahorse-nautilus
+      - gcc
+      - gcc-c++
+      - clang
+      - make
+      - ffmpeg
+      - ImageMagick
+      # tex
       - texlive
       - latexmk
       - texlive-chktex
@@ -49,11 +49,18 @@
       - texlive-fontawesome
       - texlive-tcolorbox
       - texlive-clrscode3e
+      # apps
+      - celluloid
+      - code
+      - epiphany
+      - evolution
+      - evolution-ews
       - gimp
+      - htop
+      - google-chrome-stable
       - inkscape
-      - gcc
-      - gcc-c++
-      - clang
-      - make
-      - ffmpeg
+      - neovim
+      - seahorse
+      - seahorse-nautilus
+      - sqlitebrowser
       - vlc
