@@ -1,4 +1,4 @@
 - name: Set hardware clock to UTC
-  community.general.timezone:
+  timezone:
     hwclock: UTC
   ignore_errors: yes
