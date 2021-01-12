@@ -30,7 +30,7 @@
         path: '{{ item }}'
         state: directory
         recurse: yes
-      loop: "{{ dest_paths | map('dirname') | list | unique }}"
+      loop: "{{ dest_paths | map('dirname') | unique | reject('match', ansible_env.HOME) | list }}"
 
     - name: Link the files
       file:
