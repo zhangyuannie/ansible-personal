@@ -17,6 +17,7 @@
   dnf:
     name:
       - 'https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm'
+      - 'https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm'
     state: present
     disable_gpg_check: yes
 
@@ -29,18 +30,23 @@
       # dev
       - git
       - java-11-openjdk-devel
+      - java-11-openjdk-src
       - golang
       - nodejs
       - yarn
       - python3-psutil # ansible dconf module
       - gcc
       - gcc-c++
-      - rust
-      - cargo
       - clang
       - make
       - ffmpeg
       - ImageMagick
+      # rust
+      - rust
+      - rust-src
+      - cargo
+      - rls
+      - rustfmt
       # tex
       - texlive
       - latexmk
