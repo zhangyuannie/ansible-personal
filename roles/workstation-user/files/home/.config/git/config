@@ -3,3 +3,5 @@
 	name = Zhangyuan Nie
 [core]
 	autocrlf = input
+[init]
+	defaultBranch = main
