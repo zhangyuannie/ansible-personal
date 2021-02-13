@@ -57,6 +57,7 @@
       - texlive-fontawesome
       - texlive-tcolorbox
       - texlive-clrscode3e
+      - texlive-tikz-qtree
       # apps
       - celluloid
       - code
@@ -64,6 +65,7 @@
       - evolution
       - evolution-ews
       - gimp
+      - gimp-dds-plugin
       - htop
       - google-chrome-stable
       - inkscape
