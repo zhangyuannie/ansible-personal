@@ -51,3 +51,30 @@
       dconf:
         key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name
         value: "'Launch terminal'"
+
+- name: set default gnome-terminal profile
+  block:
+    - name: use custom font
+      dconf:
+        key: '/org/gnome/terminal/legacy/profiles:/:{{ default_profile }}/use-system-font'
+        value: 'false'
+    - name: set font
+      dconf:
+        key: '/org/gnome/terminal/legacy/profiles:/:{{ default_profile }}/font'
+        value: "'DejaVu Sans Mono 12'"
+    - name: use transparency background
+      dconf:
+        key: '/org/gnome/terminal/legacy/profiles:/:{{ default_profile }}/use-transparent-background'
+        value: 'true'
+    - name: set transparency percentage
+      dconf:
+        key: '/org/gnome/terminal/legacy/profiles:/:{{ default_profile }}/background-transparency-percent'
+        value: '8'
+    - name: set color palette to a mix of Solarized and Tango
+      dconf:
+        key: '/org/gnome/terminal/legacy/profiles:/:{{ default_profile }}/palette'
+        value: >-
+          ['#2e3436', '#dc322f', '#859900', '#b58900', '#268bd2', '#d33682', '#2aa198', '#d3d7cf',
+          '#555753', '#ef2929', '#8ae234', '#fce94f', '#729fcf', '#ad7fa8', '#34e2e2', '#eeeeec']
+  vars:
+    default_profile: b1dcc9dd-5262-4d8d-a863-c897e6d979b9
