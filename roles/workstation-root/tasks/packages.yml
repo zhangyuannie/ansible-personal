@@ -60,7 +60,7 @@
       - texlive-tcolorbox
       - texlive-clrscode3e
       - texlive-tikz-qtree
-      - texlive-unquote
+      - texlive-upquote
       - texlive-ifoddpage
       - texlive-acmart
       # apps
