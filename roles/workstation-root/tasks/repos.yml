@@ -15,12 +15,3 @@
     gpgcheck: yes
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     skip_if_unavailable: yes
-
-- name: Add the yarn repository
-  yum_repository:
-    name: yarn
-    description: Yarn
-    baseurl: https://dl.yarnpkg.com/rpm/
-    gpgcheck: yes
-    gpgkey: https://dl.yarnpkg.com/rpm/pubkey.gpg
-    skip_if_unavailable: yes
