@@ -1,10 +1,3 @@
-- name: Setup basic directories
-  file:
-    state: directory
-    path: '{{ item }}'
-  loop:
-    - ~/Projects
-
 - name: Setup the home directory
   vars:
     files_dir: '{{ ansible_env.PWD }}/roles/workstation-user/files/home'
