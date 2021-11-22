@@ -1,0 +1,12 @@
+- name: Nvidia Setup
+  block:
+    - name: Install packages
+      package:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - akmod-nvidia
+          - xorg-x11-drv-nvidia-cuda
+
+  become: yes
