@@ -32,3 +32,5 @@ fi
 if [[ -f "${HOME}/._bashrc" ]]; then
   . "${HOME}/._bashrc"
 fi
+
+alias gitl='git log --oneline'
