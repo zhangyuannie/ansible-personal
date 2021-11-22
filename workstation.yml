@@ -3,3 +3,4 @@
     - workstation-root
     - nvidia
     - workstation-user
+    - golang

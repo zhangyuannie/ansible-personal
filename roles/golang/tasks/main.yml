@@ -1,0 +1,41 @@
+- name: Golang Setup
+  block:
+    - name: Get latest version
+      uri:
+        url: https://golang.org/VERSION?m=text
+        return_content: yes
+      register: latest_version
+      failed_when: "'go' not in latest_version.content"
+
+    - name: Create directory
+      file:
+        state: directory
+        path: '{{ ansible_env.HOME }}/.local/lib'
+        recurse: yes
+
+    - name: Check if already installed
+      stat:
+        path: '{{ ansible_env.HOME }}/.local/lib/go'
+      register: goroot
+
+    - name: Download and install
+      unarchive: 
+        remote_src: yes
+        src: 'https://golang.org/dl/{{ latest_version.content }}.linux-amd64.tar.gz'
+        dest: '{{ ansible_env.HOME }}/.local/lib'
+      when: not goroot.stat.exists
+    
+    - name: Find the executables
+      find:
+        paths: '{{ ansible_env.HOME }}/.local/lib/go/bin'
+        file_type: file
+      register: exe_files
+
+    - name: Link the executables
+      file:
+        state: link
+        src: '{{ item.path }}'
+        dest: '{{ ansible_env.HOME }}/.local/bin/{{ item.path | basename }}'
+      loop: '{{ exe_files.files }}'
+      loop_control:
+        label: '{{ item.path | basename }}'
