@@ -6,3 +6,5 @@
 	excludesfile = /home/yuan/.config/git/global.gitignore
 [init]
 	defaultBranch = main
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
