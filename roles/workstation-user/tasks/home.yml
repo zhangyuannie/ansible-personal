@@ -2,6 +2,16 @@
   vars:
     files_dir: '{{ ansible_env.PWD }}/roles/workstation-user/files/home'
   block:
+    - name: Create Projects directory
+      file:
+        state: directory
+        path: '{{ ansible_env.HOME }}/Documents/Projects'
+        recurse: yes
+    - name: Link Projects directory
+      file:
+        state: link
+        src: '{{ ansible_env.HOME }}/Documents/Projects'
+        dest: '{{ ansible_env.HOME }}/Projects'
     - name: Find the files
       find:
         paths: '{{ files_dir }}'
