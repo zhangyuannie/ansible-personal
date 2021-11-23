@@ -5,13 +5,19 @@ if [[ -f /etc/bashrc ]]; then
   . /etc/bashrc
 fi
 
-# User specific environment
-if ! [[ "${PATH}" =~ "${HOME}/.local/bin:" ]]; then
-  PATH="${HOME}/.local/bin:${PATH}"
-fi
+path_add_front() {
+  case "${PATH}" in
+    *"$1"*) : ;;
+    *) PATH="$1:${PATH}" ;;
+  esac
+}
 
-# Development environment
-PATH="${HOME}/.local/go/bin:${HOME}/.deno/bin:${HOME}/.yarn/bin:${PATH}"
+path_add_front "${HOME}/.local/bin"
+path_add_front "${HOME}/.local/go/bin"
+path_add_front "${HOME}/.yarn/bin"
+path_add_front "${HOME}/.deno/bin"
+
+unset path_add_front
 
 # Prompt
 if [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
