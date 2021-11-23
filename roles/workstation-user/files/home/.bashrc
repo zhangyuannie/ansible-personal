@@ -28,9 +28,12 @@ if [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
   unset get_prompt
 fi
 
-# Source private aliases and functions :)
-if [[ -f "${HOME}/._bashrc" ]]; then
-  . "${HOME}/._bashrc"
+if [[ -d "${HOME}/.bashrc.d" ]]; then
+	for rc in "${HOME}/.bashrc.d/"*; do
+		if [[ -f "${rc}" ]]; then
+			. "${rc}"
+		fi
+	done
 fi
 
 alias gitl='git log --oneline'
