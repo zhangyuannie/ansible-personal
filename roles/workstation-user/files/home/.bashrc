@@ -11,7 +11,7 @@ if ! [[ "${PATH}" =~ "${HOME}/.local/bin:" ]]; then
 fi
 
 # Development environment
-PATH="${HOME}/go/bin:${HOME}/.deno/bin:${HOME}/.yarn/bin:${PATH}"
+PATH="${HOME}/.local/go/bin:${HOME}/.deno/bin:${HOME}/.yarn/bin:${PATH}"
 
 # Prompt
 if [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
