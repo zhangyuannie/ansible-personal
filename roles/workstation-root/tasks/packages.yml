@@ -39,6 +39,8 @@
       - gcc
       - gcc-c++
       - clang
+      - valgrind
+      - gtk4-devel
       - make
       - ffmpeg
       - ImageMagick
