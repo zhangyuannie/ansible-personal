@@ -1,4 +1,4 @@
-- name: Remove Gnome Software
+- name: Remove unwanted packages
   dnf:
     name: '{{ packages }}'
     state: absent
@@ -7,6 +7,7 @@
     packages:
       - PackageKit
       - gnome-software
+      - fedora-chromium-config
 
 - name: Upgrade all packages
   dnf:
