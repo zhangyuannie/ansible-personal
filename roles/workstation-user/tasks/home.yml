@@ -1,6 +1,6 @@
 - name: Setup the home directory
   vars:
-    files_dir: '{{ ansible_env.PWD }}/roles/workstation-user/files/home'
+    files_dir: '{{ role_path }}/files/home'
   block:
     - name: Create Projects directory
       file:
