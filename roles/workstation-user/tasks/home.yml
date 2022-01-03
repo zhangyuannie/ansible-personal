@@ -2,6 +2,17 @@
   vars:
     files_dir: '{{ role_path }}/files/home'
   block:
+    - name: GnuPG directory
+      file:
+        path: '{{ ansible_env.HOME }}/.gnupg'
+        state: directory
+        mode: '700'
+    - name: GnuPG config
+      copy:
+        src: gpg.conf
+        dest: '{{ ansible_env.HOME }}/.gnupg/gpg.conf'
+        mode: '700'
+
     - name: Create Projects directory
       file:
         state: directory
@@ -12,6 +23,7 @@
         state: link
         src: '{{ ansible_env.HOME }}/Documents/Projects'
         dest: '{{ ansible_env.HOME }}/Projects'
+        
     - name: Find the files
       find:
         paths: '{{ files_dir }}'
