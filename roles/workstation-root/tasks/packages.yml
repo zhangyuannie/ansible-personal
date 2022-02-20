@@ -35,7 +35,6 @@
       - java-11-openjdk-src
       - nodejs
       - yarnpkg
-      - python3-psutil # ansible dconf module
       - python3-peewee
       - gcc
       - gcc-c++

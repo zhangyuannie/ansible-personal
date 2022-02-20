@@ -2,10 +2,13 @@
 
 set -euo pipefail
 
-if ! rpm -q ansible 2>/dev/null; then
-  sudo yum -y install ansible
-fi
-
 cd "$(dirname "$(readlink -f "$0")")"
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+if [[ ! -f ".venv/bin/ansible" ]]; then
+  python3 -m pip install ansible psutil
+fi
 
 ansible-playbook workstation.yml --ask-become-pass
