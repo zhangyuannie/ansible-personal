@@ -1,6 +1,6 @@
 - name: Remove unwanted packages
   dnf:
-    name: '{{ packages }}'
+    name: "{{ packages }}"
     state: absent
     autoremove: yes
   vars:
@@ -8,23 +8,24 @@
       - PackageKit
       - gnome-software
       - fedora-chromium-config
+      - gnome-clocks
 
 - name: Upgrade all packages
   dnf:
-    name: '*'
+    name: "*"
     state: latest
 
 - name: Enable the RPM Fusion repository
   dnf:
     name:
-      - 'https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm'
-      - 'https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm'
+      - "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+      - "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
     state: present
     disable_gpg_check: yes
 
 - name: Install packages
   package:
-    name: '{{ packages }}'
+    name: "{{ packages }}"
     state: present
   vars:
     packages:
@@ -65,13 +66,9 @@
       - texlive-ifoddpage
       - texlive-acmart
       # apps
-      - celluloid
       - code
-      - epiphany
       - evolution
       - evolution-ews
-      - gimp
-      - gimp-dds-plugin
       - htop
       - google-chrome-stable
       - inkscape

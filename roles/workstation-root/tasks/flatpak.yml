@@ -3,3 +3,12 @@
     name: flathub
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+- name: Install packages from flathub
+  flatpak:
+    name:
+      - org.gimp.GIMP
+      - org.gnome.clocks
+      - org.gnome.Epiphany
+      - io.github.celluloid_player.Celluloid
+    state: present
