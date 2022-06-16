@@ -1,0 +1,23 @@
+- name: TeX Live Setup
+  block:
+    - name: Install packages
+      package:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - texlive
+          - latexmk
+          - texlive-chktex
+          - texlive-latexindent
+          - texlive-wrapfig
+          - texlive-sourcesanspro
+          - texlive-fontawesome
+          - texlive-tcolorbox
+          - texlive-clrscode3e
+          - texlive-tikz-qtree
+          - texlive-upquote
+          - texlive-ifoddpage
+          - texlive-acmart
+
+  become: yes
