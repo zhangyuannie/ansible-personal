@@ -1,0 +1,67 @@
+- name: Show battery percentage
+  gsettings:
+    schema: org.gnome.desktop.interface
+    key: show-battery-percentage
+    value: "true"
+
+- name: Allow volume above 100 percent
+  gsettings:
+    schema: org.gnome.desktop.sound
+    key: allow-volume-above-100-percent
+    value: "true"
+
+- name: Key bindings
+  gsettings:
+    schema: org.gnome.desktop.wm.keybindings
+    entries:
+      close: "['<Super>q', '<Alt>F4']"
+      toggle-fullscreen: "['<Super>f']"
+
+- name: Enable night light
+  gsettings:
+    schema: org.gnome.settings-daemon.plugins.color
+    key: night-light-enabled
+    value: "true"
+
+- name: Set Nautilus icon view to standard
+  gsettings:
+    schema: org.gnome.nautilus.icon-view
+    key: default-zoom-level
+    value: "'medium'"
+
+- name: Enable symlink creation in Nautilus
+  gsettings:
+    schema: org.gnome.nautilus.preferences
+    key: show-create-link
+    value: "true"
+
+- name: Register custom key bindings
+  gsettings:
+    schema: org.gnome.settings-daemon.plugins.media-keys
+    key: custom-keybindings
+    value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+
+- name: Set key binding for launching terminal
+  gsettings:
+    schema: org.gnome.settings-daemon.plugins.media-keys.custom-keybinding
+    path: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/
+    entries:
+      binding: "'<Super>Return'"
+      command: "'gnome-terminal'"
+      name: "'Launch terminal'"
+
+- name: Set default gnome-terminal profile
+  gsettings:
+    schema: org.gnome.Terminal.Legacy.Profile
+    path: "/org/gnome/terminal/legacy/profiles:/:{{ default_profile }}/"
+    entries:
+      use-system-font: "false"
+      font: "'DejaVu Sans Mono 12'"
+      use-transparent-background: "true"
+      background-transparency-percent: "8"
+      # mix of Solarized and Tango
+      palette: >-
+        ['#2e3436', '#dc322f', '#859900', '#b58900', '#268bd2', '#d33682', '#2aa198', '#d3d7cf',
+        '#555753', '#ef2929', '#8ae234', '#fce94f', '#729fcf', '#ad7fa8', '#34e2e2', '#eeeeec']
+  vars:
+    default_profile: b1dcc9dd-5262-4d8d-a863-c897e6d979b9

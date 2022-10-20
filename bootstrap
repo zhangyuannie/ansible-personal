@@ -8,7 +8,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 if [[ ! -f ".venv/bin/ansible" ]]; then
-  python3 -m pip install ansible psutil
+  python3 -m pip install ansible
 fi
 
 ansible-playbook workstation.yml --ask-become-pass
