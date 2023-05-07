@@ -1,0 +1,6 @@
+- name: Install
+  ansible.builtin.dnf:
+    name: ffmpeg
+    state: latest
+    allowerasing: yes
+  become: yes

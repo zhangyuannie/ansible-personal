@@ -6,12 +6,3 @@
     gpgcheck: yes
     gpgkey: https://dl.google.com/linux/linux_signing_key.pub
     skip_if_unavailable: yes
-
-- name: Add the vscode repository
-  yum_repository:
-    name: vscode
-    description: Visual Studio Code
-    baseurl: https://packages.microsoft.com/yumrepos/vscode
-    gpgcheck: yes
-    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-    skip_if_unavailable: yes

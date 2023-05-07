@@ -9,4 +9,10 @@
           - akmod-nvidia
           - xorg-x11-drv-nvidia-cuda
 
+    - name: Remove xorg-x11-drv-nvidia-power
+      # this package is experimental and can cause dbus issues
+      package:
+        name: xorg-x11-drv-nvidia-power
+        state: absent
+
   become: yes

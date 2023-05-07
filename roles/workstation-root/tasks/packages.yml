@@ -9,6 +9,8 @@
       - gnome-software
       - fedora-chromium-config
       - gnome-clocks
+      - gnome-maps
+      - gnome-weather
 
 - name: Upgrade all packages
   dnf:
@@ -44,16 +46,16 @@
       - gtk4-devel
       - libadwaita-devel
       - make
+      - meson
       - ffmpeg
       - ImageMagick
       # rust
       - rust
       - rust-src
       - cargo
-      - rls
+      - rust-analyzer
       - rustfmt
       # apps
-      - code
       - evolution
       - evolution-ews
       - htop
@@ -65,3 +67,4 @@
       - seahorse-nautilus
       - sqlitebrowser
       - vlc
+      - unrar

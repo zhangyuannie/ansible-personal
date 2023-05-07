@@ -23,11 +23,11 @@
     key: night-light-enabled
     value: "true"
 
-- name: Set Nautilus icon view to standard
+- name: Set Nautilus icon view to small
   gsettings:
     schema: org.gnome.nautilus.icon-view
     key: default-zoom-level
-    value: "'medium'"
+    value: "'small'"
 
 - name: Enable symlink creation in Nautilus
   gsettings:

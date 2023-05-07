@@ -1,0 +1,8 @@
+- name: install
+  ansible.builtin.dnf:
+    name:
+      - libbtrfsutil
+      - btrfs-progs-devel
+      - python3-btrfsutil
+    state: latest
+  become: yes

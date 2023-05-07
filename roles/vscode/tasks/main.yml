@@ -1,0 +1,15 @@
+- name: Add repository
+  yum_repository:
+    name: vscode
+    description: Visual Studio Code
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+    gpgcheck: yes
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    skip_if_unavailable: yes
+  become: yes
+
+- name: Install
+  ansible.builtin.dnf:
+    name: code
+    state: latest
+  become: yes

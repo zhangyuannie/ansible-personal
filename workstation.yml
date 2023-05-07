@@ -1,7 +1,10 @@
 - hosts: localhost
   roles:
     - workstation-root
+    - vscode
     - nvidia
+    - ffmpeg
     - workstation-user
     - golang
     - texlive
+    - btrfs-devel
