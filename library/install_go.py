@@ -25,7 +25,7 @@ def main():
         target_version = "go" + target_version
     else:
         target_version = (
-            request.urlopen("https://go.dev/VERSION?m=text").read().decode("utf-8")
+            request.urlopen("https://go.dev/VERSION?m=text").read().decode("utf-8").split("\n")[0]
         )
     if "go" not in target_version:
         module.fail_json(f"Failed to fetch latest go version: {target_version}")
