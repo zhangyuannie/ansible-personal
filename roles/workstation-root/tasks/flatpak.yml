@@ -11,4 +11,5 @@
       - org.gnome.clocks
       - org.gnome.Epiphany
       - io.github.celluloid_player.Celluloid
+      - com.github.xournalpp.xournalpp
     state: present
