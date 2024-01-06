@@ -9,6 +9,7 @@ import os
 import tarfile
 from io import BytesIO
 import shutil
+import re
 
 
 def main():
@@ -24,11 +25,14 @@ def main():
     if target_version:
         target_version = "go" + target_version
     else:
-        target_version = (
-            request.urlopen("https://go.dev/VERSION?m=text").read().decode("utf-8").split("\n")[0]
+        target_version_raw = (
+            request.urlopen("https://go.dev/VERSION?m=text").read().decode("utf-8")
         )
-    if "go" not in target_version:
-        module.fail_json(f"Failed to fetch latest go version: {target_version}")
+        target_version = re.search(r"go\d+\.\d+\.\d+", target_version_raw)
+        if target_version:
+            target_version = target_version.group(0)
+        else:
+            module.fail_json(f"Failed to fetch latest go version: {target_version_raw}")
 
     if os.path.exists(os.path.join(dest, "go")):
         p = subprocess.run(
