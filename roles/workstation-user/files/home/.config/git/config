@@ -3,6 +3,5 @@
 	name = Zhangyuan Nie
 [core]
 	autocrlf = input
-	excludesfile = /home/yuan/.config/git/global.gitignore
 [init]
 	defaultBranch = main

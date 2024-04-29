@@ -16,12 +16,7 @@
     - name: Create Projects directory
       file:
         state: directory
-        path: '{{ ansible_env.HOME }}/Documents/Projects'
-    - name: Link Projects directory
-      file:
-        state: link
-        src: '{{ ansible_env.HOME }}/Documents/Projects'
-        dest: '{{ ansible_env.HOME }}/Projects'
+        path: '{{ ansible_env.HOME }}/Projects'
 
     - name: Find the files
       find:

@@ -10,8 +10,13 @@
         file_type: file
       register: exe_files
 
+    - name: Make sure dest directory exists
+      ansible.builtin.file:
+        state: directory
+        path: '{{ ansible_env.HOME }}/.local/bin'
+
     - name: Link the executables
-      file:
+      ansible.builtin.file:
         state: link
         src: '{{ item.path }}'
         dest: '{{ ansible_env.HOME }}/.local/bin/{{ item.path | basename }}'

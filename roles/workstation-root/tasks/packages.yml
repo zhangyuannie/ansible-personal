@@ -11,6 +11,7 @@
       - gnome-clocks
       - gnome-maps
       - gnome-weather
+      - gnome-calendar
 
 - name: Upgrade all packages
   dnf:
