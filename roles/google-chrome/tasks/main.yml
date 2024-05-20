@@ -1,0 +1,16 @@
+- block:
+    - name: Add repository
+      yum_repository:
+        name: vscode
+        description: Visual Studio Code
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        gpgcheck: yes
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+        skip_if_unavailable: yes
+
+    - name: Install
+      ansible.builtin.dnf:
+        name: google-chrome-stable
+        state: latest
+
+  become: yes

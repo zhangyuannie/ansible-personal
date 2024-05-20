@@ -5,6 +5,7 @@
     - vscode
     - nvidia
     - ffmpeg
+    - google-chrome
     - workstation-user
     - golang
     - texlive
