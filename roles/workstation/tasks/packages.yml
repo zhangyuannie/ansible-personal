@@ -1,0 +1,83 @@
+- name: Remove unwanted packages
+  ansible.builtin.dnf:
+    name:
+      - fedora-chromium-config
+      - gnome-maps
+      - gnome-weather
+      - gnome-calendar
+      - gnome-contacts
+      - gnome-tour
+        # Following are installed as flatpak instead
+      - gnome-calculator
+      - gnome-clocks
+      - snapshot
+      - firefox
+      - "@LibreOffice"
+      - libreoffice-data
+    state: absent
+    autoremove: yes
+
+- name: Install packages from flathub
+  flatpak:
+    name:
+      - org.gnome.Calculator
+      - org.gnome.clocks
+      - org.gnome.Snapshot
+      - org.mozilla.firefox
+      - org.libreoffice.LibreOffice
+      - org.gimp.GIMP
+      - org.gnome.Epiphany
+      - io.github.celluloid_player.Celluloid
+      - com.github.xournalpp.xournalpp
+    state: present
+
+- name: Upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+
+- name: Install packages
+  package:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      # Libraries & Headers
+      - libbtrfsutil
+      - btrfs-progs-devel
+      - python3-btrfsutil
+      - gtk4-devel
+      - libadwaita-devel
+      # Development
+      - java-21-openjdk-devel
+      - java-21-openjdk-src
+      - nodejs
+      - yarnpkg
+      - python3-pip
+      - gcc
+      - gcc-c++
+      - clang
+      - valgrind
+      - make
+      - meson
+      - git
+      - git-filter-repo
+      # rust
+      - rust
+      - rust-src
+      - cargo
+      - rust-analyzer
+      - rustfmt
+      # apps
+      - ImageMagick
+      - evolution
+      - evolution-ews
+      - htop
+      - inkscape
+      - nautilus-python
+      - neovim
+      - seahorse
+      - seahorse-nautilus
+      - sqlitebrowser
+      - vlc
+      - unrar

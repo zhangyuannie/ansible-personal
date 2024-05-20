@@ -1,5 +1,0 @@
-- block:
-    - import_tasks: packages.yml
-    - import_tasks: flatpak.yml
-    - import_tasks: config.yml
-  become: yes

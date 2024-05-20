@@ -1,0 +1,8 @@
+- name: Remove GNOME Software
+  ansible.builtin.dnf:
+    name:
+      - PackageKit
+      - gnome-software
+    state: absent
+    autoremove: yes
+  become: yes

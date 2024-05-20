@@ -1,6 +1,6 @@
 - hosts: localhost
   roles:
-    - rpmfusion
+    - no-gnome-software
     - workstation-root
     - vscode
     - nvidia
@@ -9,4 +9,3 @@
     - workstation-user
     - golang
     - texlive
-    - btrfs-devel
