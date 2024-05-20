@@ -14,8 +14,7 @@ path_add_front() {
 
 path_add_front "${HOME}/.local/bin"
 path_add_front "${HOME}/.local/go/bin"
-path_add_front "${HOME}/.yarn/bin"
-path_add_front "${HOME}/.deno/bin"
+path_add_front "${HOME}/.local/cargo/bin"
 
 unset path_add_front
 

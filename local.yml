@@ -1,12 +1,12 @@
 - hosts: localhost
   roles:
-    - no-gnome-software
+    - no_gnome_software
     - vscode
     - nvidia
     - ffmpeg
-    - google-chrome
-    - texlive
+    - google_chrome
+    # - texlive
     - workstation
   vars:
-    name: Zhangyuan Nie
+    fullname: Zhangyuan Nie
     email: yuan@znie.org
