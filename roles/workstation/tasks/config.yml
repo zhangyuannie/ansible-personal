@@ -1,3 +1,0 @@
-- name: Set hardware clock to UTC
-  community.general.timezone:
-    hwclock: UTC

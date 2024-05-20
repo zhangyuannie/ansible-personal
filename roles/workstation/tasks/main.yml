@@ -1,4 +1,4 @@
-- block:
-    - import_tasks: config.yml
-    - import_tasks: packages.yml
-  become: yes
+- import_tasks: system_config.yml
+- import_tasks: system_packages.yml
+- import_tasks: rust.yml
+- import_tasks: go.yml

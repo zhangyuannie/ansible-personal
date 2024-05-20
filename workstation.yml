@@ -1,11 +1,10 @@
 - hosts: localhost
   roles:
     - no-gnome-software
-    - workstation-root
+    - workstation
     - vscode
     - nvidia
     - ffmpeg
     - google-chrome
     - workstation-user
-    - golang
     - texlive

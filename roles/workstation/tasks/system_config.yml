@@ -1,0 +1,13 @@
+- block:
+    - name: Set hardware clock to UTC
+      community.general.timezone:
+        hwclock: UTC
+
+    - name: Add development environment variables
+      ansible.builtin.copy:
+        src: devenv.sh
+        dest: /etc/profile.d/devenv.sh
+        owner: root
+        group: root
+        mode: '0644'
+  become: yes

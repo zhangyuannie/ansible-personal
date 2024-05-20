@@ -1,0 +1,13 @@
+- name: Install rustup-init
+  ansible.builtin.dnf:
+    name: rustup
+    state: latest
+  become: yes
+
+- name: Install rustup
+  shell: rustup-init --no-modify-path -qy
+  args:
+    creates: "{{ ansible_env.HOME }}/.local/cargo/bin/rustup"
+  environment:
+    RUSTUP_HOME: "{{ ansible_env.HOME }}/.local/lib/rustup"
+    CARGO_HOME: "{{ ansible_env.HOME }}/.local/cargo"
