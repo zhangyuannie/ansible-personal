@@ -1,3 +1,0 @@
-- import_tasks: gsettings.yml
-- import_tasks: local-packages.yml
-- import_tasks: home.yml

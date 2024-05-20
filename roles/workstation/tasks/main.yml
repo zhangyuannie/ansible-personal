@@ -2,3 +2,6 @@
 - import_tasks: system_packages.yml
 - import_tasks: rust.yml
 - import_tasks: go.yml
+- import_tasks: deno.yml
+- import_tasks: gsettings.yml
+- import_tasks: home.yml

@@ -6,5 +6,4 @@
     - nvidia
     - ffmpeg
     - google-chrome
-    - workstation-user
-    - texlive
+    # - texlive
